@@ -1,5 +1,5 @@
-# Aspasia - Le Monde au delà de l'Expérience
-**_Online Art Exhibition_**
+# Google Pals
+**_Penpals network application_**
 
 
 ## **Features**
@@ -8,32 +8,39 @@ _Main features available to users_
 
 #### Admin features
 
-- [ ] Add, edit, remove art content
-- [ ] Add, edit, archive, remove an exhibition
-- [ ] Add, edit, remove drafts
-- [ ] Archive an exhibition
-
+- [ ] Add, edit, ban, remove a user
+- [ ] Add, edit, remove a review
 
 
 #### User features
 
-- [ ] Add, edit, remove user reviews
-- [ ] Authentication (Email/Password, Google, Facebook)
 - [ ] Create an account
-- [ ] Filter and sort contents (by artist, licence, date, genre etc.)
-- [ ] Search specific artbooks
-- [ ] Create an online Exhibition ticket like museums
-- [ ] Use tickets' references to enter the exhibition/experience
-- [ ] Add, edit, remove exhibitions or content from favorites
-- [ ] Add an exhibition date to Agenda (Apple, Google etc.)
+- [ ] Authentication (Email/Password, Google, Facebook)
+- [ ] Add, edit, remove user's profile (profile/cover picture, personal info, languages etc.)
+- [ ] Save profile preferences (criterias of visibility)
+- [ ] Add, edit, remove additional pictures to profile
+- [ ] Add a featured profile song from Spotify
+
+
+- [ ] Add, edit, remove user's reviews (grade and comment after 5 messages exchanged)
+- [ ] Like/Dislike a user's review
+
+- [ ] Filter and sort people in search (by countries, languages, gender etc.)
+- [ ] Save search preferences
+
+- [ ] Add, edit, remove people to favorites/bookmarks
+- [ ] Block/unblock/report a user
+
+- [ ] Send a message to other users
+- [ ] Allow or reject messages from other users (notification with choice)
+
 
 
 ## **UI/UX**
 _Interactions in development_
 
 
-- [ ] Add documentation and biography about the artist clicking on his/her name
-- [ ] Play automatically the theme soundtrack in galleries
-- [ ] Display current exhibition for a defined time (2-3 weeks)
-
-
+- [ ] Message translations using Google Translate from a button
+- [ ] Allow vocal messages (needs users validation)
+- [ ] Notifications (sound and icons)
+- [ ] Certified/Verified users to value good behaviors
