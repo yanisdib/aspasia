@@ -1,0 +1,14 @@
+@import "../../../assets/style/variables";
+
+.burst {
+    height: 700px;
+    .burst-title{
+        font-family: $heading-font;
+        font-size: 11em;
+        color: $primary-color;
+    }
+    .burst-banner {
+        background-position: center;
+        //background-size: cover;
+    }
+}

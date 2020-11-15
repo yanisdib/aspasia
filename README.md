@@ -1,5 +1,5 @@
 # Google Pals
-**_Penpals network application_**
+**_Penpals network application using Google design_**
 
 
 ## **Features**

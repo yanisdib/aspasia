@@ -1,0 +1,50 @@
+@import "./fonts";
+
+/**
+* Backgrounds: Defines background colors for each theme (☀️:🌙)
+**/
+$bg-light: #f9efe4;
+$bg-dark: #000000;
+
+/**
+* Colors: Defines all the global colors (fonts, buttons, content etc.)
+**/
+$primary-color: #000000;
+$secondary-color: #4285f4;
+$alternate-color: #f0f0f0;
+$special-color: #fabc00;
+
+$content-color: #423F3F;
+
+$primary-block-color: #ffffff;
+$secondary-block-color: #e7e7e7; // or #3cbcd0 (sky blue) : #ac94c8 (lavender)
+$info-block-color:#dadada;
+
+$heading-color: #cdcdcd;
+
+$danger-color: #e94136;
+$success-color: #34a853;
+
+/**
+* Fonts: Defines all the global fonts (headings, titles, content etc.)
+**/
+$main-font: "Poppins", sans-serif;
+$heading-font: "Roboto", sans-serif;
+$subtitle-font: "Roboto", sans-serif;
+$button-font: "Manrope", sans-serif;
+
+/**
+* Container: Defines a container size and other custom settings
+**/
+
+$container-width: 1450px;
+$max-width: $container-width;
+
+
+/**
+* Sizes: Defines sizes of elements
+**/
+
+$content-size: smaller;
+
+

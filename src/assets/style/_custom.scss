@@ -1,0 +1,49 @@
+@import "~bootstrap/scss/variables";
+@import "./variables";
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: $container-width;
+    }
+}
+.row {
+    margin: auto;
+}
+
+html,
+body {
+    font-family: $main-font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    color: $primary-color;
+}
+
+.btn {
+    font-family: $button-font;
+    font-weight: 300;
+    padding: 0.75em 1.5em;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border-style: none;
+    border-radius: 60px;
+    &:hover {
+        background-color: $primary-color;
+    }
+}
+
+a {
+    color: $primary-color;
+    &:hover {
+        text-decoration: none;
+        color: $primary-color;
+        cursor: pointer;
+    }
+}
+
+p{
+    font-size: $content-size;
+    color: $content-color;
+}
