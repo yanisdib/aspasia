@@ -8,3 +8,19 @@
         font-weight: $i * 100;
     }
 }
+
+.blue{
+    color: $secondary-color;
+}
+.red{
+    color: $danger-color;
+}
+.yellow{
+    color: $special-color;
+}
+.green{
+    color: $success-color;
+}
+.gray{
+    color: $content-color;
+}

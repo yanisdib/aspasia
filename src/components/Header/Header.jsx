@@ -8,12 +8,20 @@ function Header() {
                 </svg>
             </div>
             <div className="col-3 text-center d-flex align-items-center">
-                <span><h4>Google Pals</h4></span>
+                <h4>
+                    <span className="blue">G</span>
+                    <span className="red">o</span>
+                    <span className="yellow">o</span>
+                    <span className="blue">g</span>
+                    <span className="green">l</span>
+                    <span className="red">e</span>
+                    <span className="gray"> Pals</span>
+                </h4>
             </div>
             <div className="col-7 d-flex text-center justify-content-end align-items-center">
                 <a className="p-4 fw-5">Help</a>
                 <a className="p-4 fw-5">Contact</a>
-                <a className="p-4 fw-5">News</a>
+                <a className="p-4 fw-5">Create an account</a>
                 <a className="p-4 fw-5">Sign in</a>
             </div>
         </div>
