@@ -5,9 +5,9 @@ export const createUserWithEmailAndPassword = (user) => ({
     user
 });
 
+
 export const startCreateUserWithEmailAndPassword = (userDefaultData = {}) => {
-    return async (dispatch, getState) => {
-        const creationTime = getState().auth.uid.metadata.a;
+    return async (dispatch) => {
         const {
             firstName = '',
             lastName = '',
@@ -19,29 +19,24 @@ export const startCreateUserWithEmailAndPassword = (userDefaultData = {}) => {
             password = '',
             isAdmin = false,
             isVerified = false,
-            isSuper = false,
-            createdAt = creationTime ? creationTime : 0
+            isSuper = false
         } = userDefaultData;
-        const userData = { firstName, lastName, username, birthdate, country, city, email, password, isAdmin, isVerified, isSuper, createdAt };
         try {
-            await firebase.auth().createUserWithEmailAndPassword(email, password);
-            const user = getState().auth.uid;
-            return database.ref('users').push(userData).then(() => {
-                try {
-                    dispatch(createUserWithEmailAndPassword({
-                        id: user.uid,
-                        ...userData
-                    }));
-                }
-                catch (error) {
-                    console.log(`${error.code}: ${error.message}`);
-                };
-
-            });
+            const result = await firebase.auth().createUserWithEmailAndPassword(email, password); // returns an object user
+            const user = result.user;
+            const createdAt = user.metadata.a ? user.metadata.a : 0; // Time when Firebase created the account
+            const userData = { firstName, lastName, username, birthdate, country, city, email, password, isAdmin, isVerified, isSuper, createdAt };
+            await database.ref('users')
+                .push(userData);
+            await dispatch(createUserWithEmailAndPassword({
+                id: user.uid,
+                createdAt: createdAt,
+                ...userData
+            }));
+            console.log('User was successfully added!');
         }
         catch (error) {
             console.log(`${error.code}: ${error.message}`);
         };
-        console.log('User was successfully added!');
     };
 };

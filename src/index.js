@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux';
+import { firebase } from './firebase/firebase';
+
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 
 import './assets/style/style.scss';
 import './index.scss';
-import { Provider } from 'react-redux';
 
 const store = configureStore();
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

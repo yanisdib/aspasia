@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { startCreateUserWithEmailAndPassword } from '../../../actions/users';
 
 import PresentationLayout from '../../Layout/PresentationLayout/PresentationLayout';
 
@@ -10,7 +13,11 @@ import thirdBackground from '../../../assets/images/bg_detail_03_600x900.jpg';
 import './_home.scss';
 import CreateUserForm from '../../../containers/CreateUserForm/CreateUserForm';
 
-function Home() {
+function Home(props) {
+    const onSubmit = (user) => {
+        props.startCreateUserWithEmailAndPassword(user);
+        console.log(user);
+    };
     const images = [firstBackground, secondBackground];
     const imagesReversed = [thirdBackground, fourthBackground];
     return (
@@ -21,7 +28,9 @@ function Home() {
                         <h2 className="fw-6">Join our penpals community</h2>
                         <p className="pr-4 pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a felis id nisl tempus bibendum quis et purus. Morbi sem lacus, volutpat a vulputate id, tempor et elit. Maecenas eu turpis et est posuere ultricies.</p>
                     </div>
-                    <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"><CreateUserForm /></div>
+                    <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <CreateUserForm onSubmit={onSubmit} />
+                    </div>
                 </div>
             </div>
             <PresentationLayout title="Meet people from all around the world" images={images} isReversed={false}>
@@ -37,7 +46,12 @@ function Home() {
 Home.propTypes = {
     title: PropTypes.string,
     images: PropTypes.arrayOf(PropTypes.string),
-    isReversed: PropTypes.bool
+    isReversed: PropTypes.bool,
+    onSubmit: PropTypes.func
 };
 
-export default Home;
+const mapDispatchToProps = (dispatch) => ({
+    startCreateUserWithEmailAndPassword: (user) => dispatch(startCreateUserWithEmailAndPassword(user))
+});
+
+export default connect(undefined, mapDispatchToProps)(Home);

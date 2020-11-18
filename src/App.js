@@ -1,9 +1,9 @@
 import Home from './components/Pages/Home/Home';
 
 
-function App() {
+function App(props) {
   return (
-    <Home />
+    <Home history={props.history} />
   );
 };
 

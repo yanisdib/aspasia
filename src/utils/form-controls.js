@@ -1,0 +1,22 @@
+export function checkEmail(email) {
+    const regexEmail = /^S*[a-zA-Z0-9!@)(.]{1,}$/g;
+    const isMatching = regexEmail.test(email);
+    return isMatching;
+};
+
+export function checkPassword(a, b) {
+    const regexPassword = /^S*[a-zA-Z0-9!@#$%^&*)(+=._-]{6,}$/g;
+    const isMatching = regexPassword.test(a);
+    return isMatching;
+};
+
+export function checkAlphaString(string) {
+    const regexAlpha = /^[a-zA-Z]$/g;
+    const isMatching = regexAlpha.test(string);
+    return isMatching;
+};
+
+export function validatePassword(a, b) {
+    return a===b ? true:false;
+};
+
