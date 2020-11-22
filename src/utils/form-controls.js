@@ -4,8 +4,8 @@ export function checkEmail(email) {
     return isMatching;
 };
 
-export function checkPassword(a, b) {
-    const regexPassword = /^S*[a-zA-Z0-9!@#$%^&*)(+=._-]{6,}$/g;
+export function checkPassword(a) {
+    const regexPassword = /^S*[a-zA-Z0-9!@#$%^&*)(+=._-]{8,}$/g;
     const isMatching = regexPassword.test(a);
     return isMatching;
 };
@@ -16,7 +16,10 @@ export function checkAlphaString(string) {
     return isMatching;
 };
 
-export function validatePassword(a, b) {
+export function comparePassword(a, b) {
     return a===b ? true:false;
 };
 
+export function checkAge(date){
+    
+}

@@ -26,7 +26,7 @@ body {
     &:hover {
         background-color: inherit;
     }
-    &:active{
+    &:active {
         background-color: inherit;
     }
 }
@@ -38,7 +38,7 @@ body {
     &:hover {
         background-color: $secondary-color;
     }
-    &:active{
+    &:active {
         background-color: $secondary-color !important;
     }
 }
@@ -57,10 +57,33 @@ p {
     color: $content-color;
 }
 
-.form-control{
-    border: 2px solid #ced4da;
+.react-google-flight-datepicker {
+    .date-picker {
+        position: relative;
+        border-radius: 4px;
+        background: white;
+        padding: 0px;
+        .date-picker-input {
+            border: 2px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+
+        .selected-date {
+            font-size: 1rem;
+            color: #6c757d;        }
+    }
 }
-svg{
+
+.form-control {
+    border: 2px solid #ced4da;
+    &:focus {
+        border: 2px solid #1a73e8;
+        box-shadow: none;
+        background-color: #f4f8ff;
+        transition: background-color 15ms ease-in-out;
+    }
+}
+svg {
     color: $content-color;
 }
 
@@ -71,7 +94,7 @@ svg{
     .h-#{$i} {
         height: $i * 10% !important;
     }
-    .mtb-#{$i}{
-        margin: $i *50px 0px;
+    .mtb-#{$i} {
+        margin: $i * 50px 0px;
     }
 }

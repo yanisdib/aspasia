@@ -23,7 +23,7 @@ function Home(props) {
     return (
         <>
             <div className="container">
-                <div className="row justify-content-between mtb-2">
+                <div className="row justify-content-between mtb-2 burst-heading">
                     <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-5 mb-sm-5 mb-md-0 mb-lg-0 mb-xl-0">
                         <h2 className="fw-6">Join our penpals community</h2>
                         <p className="pr-4 pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a felis id nisl tempus bibendum quis et purus. Morbi sem lacus, volutpat a vulputate id, tempor et elit. Maecenas eu turpis et est posuere ultricies.</p>

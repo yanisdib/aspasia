@@ -26,14 +26,13 @@ export const startCreateUserWithEmailAndPassword = (userDefaultData = {}) => {
             const user = result.user;
             const createdAt = user.metadata.a ? user.metadata.a : 0; // Time when Firebase created the account
             const userData = { firstName, lastName, username, birthdate, country, city, email, password, isAdmin, isVerified, isSuper, createdAt };
-            await database.ref('users')
-                .push(userData);
-            await dispatch(createUserWithEmailAndPassword({
+            const res = await dispatch(createUserWithEmailAndPassword({
                 id: user.uid,
                 createdAt: createdAt,
                 ...userData
             }));
-            console.log('User was successfully added!');
+            return database.ref('users')
+                .push(res.user);
         }
         catch (error) {
             console.log(`${error.code}: ${error.message}`);

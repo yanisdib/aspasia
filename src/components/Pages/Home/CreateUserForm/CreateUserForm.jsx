@@ -1,56 +1,100 @@
-import countries from 'country-data/data/countries.json';
+import data from 'country-data/data/countries.json';
+import useInput from '../../../../hooks/useInput';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 import { useState } from 'react';
-import useInput from '../../hooks/useInput';
-import { checkEmail, checkPassword, validatePassword } from '../../utils/form-controls';
+import { SingleDatePicker } from 'react-google-flight-datepicker';
+import { checkEmail, checkPassword, comparePassword } from '../../../../utils/form-controls';
 
-function renderCountriesList(countries) {
-    return countries.map(country => {
-        return <option value={country.name.toLowerCase()}>{country.name}</option>
-    });
+
+const propTypes = {
+    date: PropTypes.object,
+    focused: PropTypes.bool,
+    onDateChange: PropTypes.object
+};
+
+const defaultProps = {
+    dateFormat: 'DD/MM/YYYY',
+    invalid: false,
+    disabled: false,
+    countries: ''
 };
 
 function CreateUserForm(props) {
-    /**
-     * Input Hooks
-     */
-    const { value: firstName, bind: bindFirstName } = useInput('');
-    const { value: lastName, bind: bindLastName } = useInput('');
-    const { value: username, bind: bindUsername } = useInput('');
-    const { value: email, bind: bindEmail } = useInput('');
-    const { value: password, bind: bindPassword } = useInput('');
-    const { value: passwordBis, bind: bindPasswordBis } = useInput('');
-    const { value: country, bind: bindCountry } = useInput('');
-    const { value: city, bind: bindCity } = useInput('');
-    const { value: birthdate, bind: bindBirthdate } = useInput('');
+
+
+    const calendarStyle = {
+        border: "2px solid #ced4da"
+    };
+
+    const maxYear = moment().format('YYYY') - 16;
+    // Hooks
+    const { value: firstName, bind: bindFirstName, reset: resetFirstName } = useInput('');
+    const { value: lastName, bind: bindLastName, reset: resetLastName } = useInput('');
+    const { value: username, bind: bindUsername, reset: resetUsername } = useInput('');
+    const { value: email, bind: bindEmail, reset: resetEmail } = useInput('');
+    const { value: password, bind: bindPassword, reset: resetPassword } = useInput('');
+    const { value: passwordBis, bind: bindPasswordBis, reset: resetPasswordBis } = useInput('');
+    const { value: country, bind: bindCountry, reset: resetCountry } = useInput('');
+    const { value: city, bind: bindCity, reset: resetCity } = useInput('');
+    const [birthdate, setBirthdate] = useState(moment().subtract(16, "years"));
+    const [calendarFocused, setCalendarFocused] = useState(false);
     const [errorForm, setErrorForm] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
+
+    function renderCountriesList() {
+        const countries = data;
+        return countries.map(country => (
+            <option value={country.name.toLowerCase()}>{country.name}</option>
+        ));
+    };
+
+    const onDateChange = (birthdate) => {
+        if (birthdate) {
+            setBirthdate(birthdate);
+        };
+    };
+
+    const onFocusChange = ({ focused }) => {
+        setCalendarFocused(focused);
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
         let isValidEmail = checkEmail(email);
         let isValidPassword = checkPassword(password);
-        let hasMatchingPasswords = validatePassword(password, passwordBis);
+        let hasMatchingPasswords = comparePassword(password, passwordBis);
         if (!email || !password) {
-            setErrorForm('Please provide an email and a password');
+            setErrorForm('Please provide valid email and password');
         }
         else {
-            setErrorForm('');
             if (isValidEmail && isValidPassword && hasMatchingPasswords) {
                 props.onSubmit(
                     {
                         firstName,
                         lastName,
                         username,
-                        birthdate,
+                        birthdate: birthdate.format("DD/MM/YYYY"),
                         email,
                         password,
                         country,
                         city
                     }
                 );
+                setErrorForm('');
+                setErrorEmail('');
+                setErrorPassword('');
+                setErrorPassword('');
+                resetFirstName();
+                resetLastName();
+                resetUsername();
+                resetPassword();
+                resetPasswordBis();
+                resetCountry();
+                resetEmail();
+                resetCity();
                 console.log('User successfully created!')
-                document.getElementById('createAccountForm').reset();
             }
             else if (!isValidEmail) {
                 setErrorEmail('Please provide a valid email');
@@ -79,6 +123,25 @@ function CreateUserForm(props) {
                     </div>
                 </div>
                 <div className="form-group mt-3">
+                    <label htmlFor="birthdateInput">Birthdate</label>
+                    <br />
+                    <SingleDatePicker
+                        date={birthdate}
+                        startDatePlaceholder="Date"
+                        startDate={moment().subtract(16, "years")}
+                        maxDate={new Date(maxYear, 12, 31)}
+                        onDateChange={onDateChange}
+                        focused={calendarFocused}
+                        onFocusChange={onFocusChange}
+                        numberOfMonths={0}
+                        isOutsideRange={() => false}
+                        dateFormat={'DD/MM/YYYY'}
+                        singleCalendar={true}
+                        id="birthdateInput"
+                        style={calendarStyle}
+                    />
+                </div>
+                <div className="form-group mt-3">
                     <label htmlFor="usernameInput">Username</label>
                     <input type="text" id="usernameInput" className="form-control" placeholder="Username" {...bindUsername} />
                 </div>
@@ -102,15 +165,16 @@ function CreateUserForm(props) {
                         <label htmlFor="countryInput">Country</label>
                         <select name="country" id="countrySelect" className="form-control" {...bindCountry}>
                             <option value="">Select your country</option>
-                            {renderCountriesList(countries)}
+                            {renderCountriesList()}
                         </select>
                     </div>
                     <div className="col">
                         <label htmlFor="lastNameInput">City</label>
                         <input type="text" id="cityInput" className="form-control" placeholder="City" {...bindCity} />
                     </div>
-                    <small id="formHelp" className="red">{errorForm}</small>
                 </div>
+                <br />
+                <small id="formHelp" className="red">{errorForm}</small>
                 <div className="form-group mt-4">
                     <input type="submit" className="btn btn-primary" value="Create an account" />
                 </div>
@@ -121,5 +185,8 @@ function CreateUserForm(props) {
         </>
     );
 };
+
+CreateUserForm.propTypes = propTypes;
+CreateUserForm.defaultProps = defaultProps;
 
 export default CreateUserForm;

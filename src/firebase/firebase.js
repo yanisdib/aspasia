@@ -1,4 +1,7 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/storage';
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -15,10 +18,12 @@ firebase.initializeApp(config);
 
 // Initialize database and storage
 const database = firebase.database();
+const storage = firebase.storage();
+
 
 // Initialize required Providers to authenticate
 const defaultProvider = new firebase.auth.EmailAuthProvider();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
-export { firebase, database, defaultProvider, googleProvider, facebookProvider as default };
+export { firebase, database, storage, defaultProvider, googleProvider, facebookProvider as default };

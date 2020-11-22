@@ -2,7 +2,7 @@
 
 .burst {
     height: 700px;
-    .burst-title{
+    .burst-title {
         font-family: $heading-font;
         font-size: 11em;
         color: $primary-color;
@@ -11,4 +11,10 @@
         background-position: center;
         //background-size: cover;
     }
+}
+.burst-heading {
+    background-image: url(../../../assets/images/bg_pals_900x1080.jpg);
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-position-x: 20%;
 }

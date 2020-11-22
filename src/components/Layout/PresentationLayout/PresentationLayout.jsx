@@ -8,7 +8,7 @@ function PresentationLayout({ images, title, isReversed, children }) {
         backgroundImage: `url(${images[1]})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover'
-    };
+        };
 
     return (
         <div className="container">
