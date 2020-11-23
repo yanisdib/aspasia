@@ -1,11 +1,11 @@
 import useInput from '../../../../hooks/useInput';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SingleDatePicker } from 'react-google-flight-datepicker';
 import { checkEmail, checkPassword, comparePassword } from '../../../../utils/form-controls';
 import { useDispatch, useSelector } from 'react-redux';
-import { startGetCities } from '../../../../actions/countries';
+import { startGetCities } from '../../../../actions/cities';
 
 const propTypes = {
     date: PropTypes.object,
@@ -28,6 +28,7 @@ function CreateUserForm(props) {
 
     // Hooks
     const dispatch = useDispatch();
+    const cities = useSelector(state => state.cities);
     const { value: firstName, bind: bindFirstName, reset: resetFirstName } = useInput('');
     const { value: lastName, bind: bindLastName, reset: resetLastName } = useInput('');
     const { value: username, bind: bindUsername, reset: resetUsername } = useInput('');
@@ -42,22 +43,18 @@ function CreateUserForm(props) {
     const [errorForm, setErrorForm] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
-    const cities = useSelector(state => state.cities);
 
-    /**
-     * UPDATE: Func will be changed into a selector
-     */
-    function renderCountriesList() {
-        const countries = props.countries;
-        const countriesList = countries.map((country, i) => (
-            <option key={`${country.key}-${i}`} value={country.value} data-iso={country.iso_a3}>{country.value}</option>
-        ));
-        return countriesList;
-    };
+    useEffect(() => {
+        if (iso !== '') {
+            dispatch(startGetCities(iso))
+        }
+    }, [dispatch, iso]);
 
     const onCountryChange = async (e) => {
         const country = e.target.value;
+        const selectedIso = e.target.options[e.target.selectedIndex].dataset.iso;
         setCountry(country);
+        setIso(selectedIso);
     };
 
     const onDateChange = (birthdate) => {
@@ -68,6 +65,30 @@ function CreateUserForm(props) {
 
     const onFocusChange = ({ focused }) => {
         setCalendarFocused(focused);
+    };
+    
+    /**
+     * Renders multiple options of countries
+     */
+    function renderCountriesList() {
+        const countries = props.countries;
+        return countries.map((country, i) => (
+            <option key={`${country.key}-${i}`} value={country.value} data-iso={country.iso_a3.toLowerCase()}>
+                {country.value}
+            </option>
+        ));
+    };
+
+    /**
+     * Renders multiple options of cities
+     * Results depend on country selected
+     */
+    function renderCitiesList() {
+        return cities.map((city) => (
+            <option key={`${city.key}`} value={city.value} data-iso={city.iso_a2}>
+                {city.value}
+            </option>
+        ));
     };
 
     const onSubmit = (e) => {
@@ -118,9 +139,6 @@ function CreateUserForm(props) {
             };
         };
     };
-
-    console.log(cities);
-    console.log(iso);
 
     return (
         <>
@@ -186,6 +204,7 @@ function CreateUserForm(props) {
                         <label htmlFor="lastNameInput">City</label>
                         <select name="city" id="citySelect" className="form-control" {...bindCity}>
                             <option value="">Select your city</option>
+                            {renderCitiesList()}
                         </select>
                     </div>
                 </div>

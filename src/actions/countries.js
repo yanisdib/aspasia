@@ -23,7 +23,8 @@ export const startGetCountries = () => {
             method: 'GET',
             url: 'https://referential.p.rapidapi.com/v1/country',
             params: {
-                fields: 'currency,currency_num_code,currency_code,continent_code,currency,iso_a3,dial_code'
+                fields: 'currency,currency_num_code,currency_code,continent_code,currency,iso_a3,dial_code',
+                sort: 'value'
             },
             headers: {
                 'x-rapidapi-key': '4a607fc436msh22598ccd16b8a18p1c2676jsnb93cf32d5e04',

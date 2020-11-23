@@ -21,8 +21,8 @@ export const startGetCities = (iso) => {
                 params: {
                     fields: 'iso_a2,state_code,state_hasc,timezone,timezone_offset',
                     iso_a2: iso.substring(0, 2),
-                    order: 'asc'
-                },
+                    limit: '9999',
+                    sort:'value'                },
                 headers: {
                     'x-rapidapi-key': '4a607fc436msh22598ccd16b8a18p1c2676jsnb93cf32d5e04',
                     'x-rapidapi-host': 'referential.p.rapidapi.com'
@@ -34,6 +34,7 @@ export const startGetCities = (iso) => {
         }
         catch (error) {
             console.log(`${error.code}: ${error.message}`);
+            return [];
         };
     }
 };
