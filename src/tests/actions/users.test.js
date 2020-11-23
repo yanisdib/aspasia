@@ -4,7 +4,6 @@ import { createUserWithEmailAndPassword, startCreateUserWithEmailAndPassword } f
 import { database } from '../../firebase/firebase';
 import users from '../fixtures/users';
 
-const uid = 'SAHxE5RuehQS1C92MsaiLNzpiAY2';
 const createMockStore = configureMockStore([thunk]);
 const initialState = {};
 

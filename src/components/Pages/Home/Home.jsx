@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 import { startCreateUserWithEmailAndPassword } from '../../../actions/users';
 
@@ -11,15 +11,17 @@ import fourthBackground from '../../../assets/images/bg_detail_04_600x900.jpg';
 import thirdBackground from '../../../assets/images/bg_detail_03_600x900.jpg';
 
 import './_home.scss';
-import CreateUserForm from '../../../containers/CreateUserForm/CreateUserForm';
+import CreateUserForm from './CreateUserForm/CreateUserForm';
 
 function Home(props) {
+    const images = [firstBackground, secondBackground];
+    const imagesReversed = [thirdBackground, fourthBackground];
+    const countries = useSelector(state => state.countries);
+    console.log(countries);
     const onSubmit = (user) => {
         props.startCreateUserWithEmailAndPassword(user);
         console.log(user);
     };
-    const images = [firstBackground, secondBackground];
-    const imagesReversed = [thirdBackground, fourthBackground];
     return (
         <>
             <div className="container">
@@ -29,7 +31,7 @@ function Home(props) {
                         <p className="pr-4 pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a felis id nisl tempus bibendum quis et purus. Morbi sem lacus, volutpat a vulputate id, tempor et elit. Maecenas eu turpis et est posuere ultricies.</p>
                     </div>
                     <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <CreateUserForm onSubmit={onSubmit} />
+                        <CreateUserForm onSubmit={onSubmit} countries={countries} />
                     </div>
                 </div>
             </div>
@@ -50,8 +52,12 @@ Home.propTypes = {
     onSubmit: PropTypes.func
 };
 
+Home.defaultProps = {
+    countries: {}
+};
+
 const mapDispatchToProps = (dispatch) => ({
-    startCreateUserWithEmailAndPassword: (user) => dispatch(startCreateUserWithEmailAndPassword(user))
+    startCreateUserWithEmailAndPassword: (user) => dispatch(startCreateUserWithEmailAndPassword(user)),
 });
 
 export default connect(undefined, mapDispatchToProps)(Home);

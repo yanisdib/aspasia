@@ -1,11 +1,11 @@
-import data from 'country-data/data/countries.json';
 import useInput from '../../../../hooks/useInput';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { useState } from 'react';
 import { SingleDatePicker } from 'react-google-flight-datepicker';
 import { checkEmail, checkPassword, comparePassword } from '../../../../utils/form-controls';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { startGetCities } from '../../../../actions/countries';
 
 const propTypes = {
     date: PropTypes.object,
@@ -17,37 +17,47 @@ const defaultProps = {
     dateFormat: 'DD/MM/YYYY',
     invalid: false,
     disabled: false,
-    countries: ''
+    cities: {}
 };
 
 function CreateUserForm(props) {
-
-
     const calendarStyle = {
         border: "2px solid #ced4da"
     };
-
     const maxYear = moment().format('YYYY') - 16;
+
     // Hooks
+    const dispatch = useDispatch();
     const { value: firstName, bind: bindFirstName, reset: resetFirstName } = useInput('');
     const { value: lastName, bind: bindLastName, reset: resetLastName } = useInput('');
     const { value: username, bind: bindUsername, reset: resetUsername } = useInput('');
     const { value: email, bind: bindEmail, reset: resetEmail } = useInput('');
     const { value: password, bind: bindPassword, reset: resetPassword } = useInput('');
     const { value: passwordBis, bind: bindPasswordBis, reset: resetPasswordBis } = useInput('');
-    const { value: country, bind: bindCountry, reset: resetCountry } = useInput('');
+    const [country, setCountry] = useState('');
     const { value: city, bind: bindCity, reset: resetCity } = useInput('');
+    const [iso, setIso] = useState('');
     const [birthdate, setBirthdate] = useState(moment().subtract(16, "years"));
     const [calendarFocused, setCalendarFocused] = useState(false);
     const [errorForm, setErrorForm] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
+    const cities = useSelector(state => state.cities);
 
+    /**
+     * UPDATE: Func will be changed into a selector
+     */
     function renderCountriesList() {
-        const countries = data;
-        return countries.map(country => (
-            <option value={country.name.toLowerCase()}>{country.name}</option>
+        const countries = props.countries;
+        const countriesList = countries.map((country, i) => (
+            <option key={`${country.key}-${i}`} value={country.value} data-iso={country.iso_a3}>{country.value}</option>
         ));
+        return countriesList;
+    };
+
+    const onCountryChange = async (e) => {
+        const country = e.target.value;
+        setCountry(country);
     };
 
     const onDateChange = (birthdate) => {
@@ -86,12 +96,13 @@ function CreateUserForm(props) {
                 setErrorEmail('');
                 setErrorPassword('');
                 setErrorPassword('');
+                setCountry('');
+                setIso('');
                 resetFirstName();
                 resetLastName();
                 resetUsername();
                 resetPassword();
                 resetPasswordBis();
-                resetCountry();
                 resetEmail();
                 resetCity();
                 console.log('User successfully created!')
@@ -107,6 +118,9 @@ function CreateUserForm(props) {
             };
         };
     };
+
+    console.log(cities);
+    console.log(iso);
 
     return (
         <>
@@ -163,14 +177,16 @@ function CreateUserForm(props) {
                 <div className="form-row">
                     <div className="col">
                         <label htmlFor="countryInput">Country</label>
-                        <select name="country" id="countrySelect" className="form-control" {...bindCountry}>
+                        <select name="country" id="countrySelect" className="form-control" onChange={onCountryChange}>
                             <option value="">Select your country</option>
                             {renderCountriesList()}
                         </select>
                     </div>
                     <div className="col">
                         <label htmlFor="lastNameInput">City</label>
-                        <input type="text" id="cityInput" className="form-control" placeholder="City" {...bindCity} />
+                        <select name="city" id="citySelect" className="form-control" {...bindCity}>
+                            <option value="">Select your city</option>
+                        </select>
                     </div>
                 </div>
                 <br />

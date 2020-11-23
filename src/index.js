@@ -9,16 +9,21 @@ import configureStore from './store/configureStore';
 
 import './assets/style/style.scss';
 import './index.scss';
+import { startGetCountries } from './actions/countries';
 
 const store = configureStore();
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <AppRouter />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+
+store.dispatch(startGetCountries()).then(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <AppRouter />
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+});
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
