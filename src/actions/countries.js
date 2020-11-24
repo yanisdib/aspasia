@@ -18,6 +18,7 @@ export function getCountries(countries) {
  * which dispatches the action GET_COUNTRIES
  */
 export const startGetCountries = () => {
+    // Returns a promise
     return async (dispatch) => {
         const req = axios({
             method: 'GET',
@@ -34,5 +35,5 @@ export const startGetCountries = () => {
         console.log(req);
         const countries = (await req).data;
         return dispatch(getCountries(countries));
-    }
+    };
 };

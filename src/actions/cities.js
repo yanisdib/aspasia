@@ -10,9 +10,15 @@ export const getCities = (cities) => {
         type: 'GET_CITIES',
         cities
     });
-}
+};
 
+/**
+ * Get Cities data from <Referential> RapidAPI
+ * Return an asynchronous function that returns a promise
+ * which dispatches the action GET_CITIES
+ */
 export const startGetCities = (iso) => {
+    // Returns a promise
     return async (dispatch) => {
         try {
             const req = axios({
@@ -36,5 +42,5 @@ export const startGetCities = (iso) => {
             console.log(`${error.code}: ${error.message}`);
             return [];
         };
-    }
+    };
 };
