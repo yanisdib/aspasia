@@ -10,6 +10,8 @@
     margin: auto;
 }
 
+//*** GLOBAL ***//
+
 html,
 body {
     font-family: $main-font;
@@ -18,6 +20,42 @@ body {
     margin: 0;
     color: $primary-color;
 }
+
+a {
+    color: $primary-color;
+    &:hover {
+        text-decoration: none;
+        color: $primary-color;
+        cursor: pointer;
+    }
+}
+
+p {
+    font-size: $content-size;
+    color: $content-color;
+}
+
+//*** REACT GOOGLE DATEPICKER ***//
+
+.react-google-flight-datepicker {
+    .date-picker {
+        position: relative;
+        border-radius: 4px;
+        background: white;
+        padding: 0px;
+        .date-picker-input {
+            border: 2px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+
+        .selected-date {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+    }
+}
+
+//*** BUTTONS ***//
 
 .btn {
     font-family: $button-font;
@@ -43,35 +81,18 @@ body {
     }
 }
 
-a {
-    color: $primary-color;
-    &:hover {
-        text-decoration: none;
-        color: $primary-color;
-        cursor: pointer;
+//*** HEADINGS ***//
+
+@for $i from 1 to 7 {
+    h#{$i} {
+        font-family: $heading-font;
     }
 }
 
-p {
-    font-size: $content-size;
-    color: $content-color;
-}
+//*** FORMS ***//
 
-.react-google-flight-datepicker {
-    .date-picker {
-        position: relative;
-        border-radius: 4px;
-        background: white;
-        padding: 0px;
-        .date-picker-input {
-            border: 2px solid #ced4da;
-            border-radius: 0.25rem;
-        }
-
-        .selected-date {
-            font-size: 1rem;
-            color: #6c757d;        }
-    }
+label {
+    font-weight: 500 !important;
 }
 
 .form-control {
@@ -83,13 +104,16 @@ p {
         transition: background-color 15ms ease-in-out;
     }
 }
+
+//*** SVG ***//
+
 svg {
     color: $content-color;
 }
 
-/**
-* Creates reusable height classes 
-**/
+//*** CUSTOM CLASSES ***//
+
+// Initialize reusable height classes
 @for $i from 1 to 11 {
     .h-#{$i} {
         height: $i * 10% !important;

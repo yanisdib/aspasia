@@ -22,7 +22,7 @@ function PresentationLayout({ images, title, isReversed, children }) {
                             <div className="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 offset-md-1 offset-lg-1 offset-xl-1 h-100">
                                 <div className="row h-4 justify-content-end">
                                     <div className="col-10 col-sm-11 col-md-12 col-lg-10 col-xl-8 p-0 align-self-center text-right">
-                                        <h3 className="fw-6">{title}</h3>
+                                        <h2 className="fw-8">{title}</h2>
                                         <p className="pl-xl-4">{children}</p>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@ function PresentationLayout({ images, title, isReversed, children }) {
                                 <div className="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 h-100">
                                     <div className="row h-4">
                                         <div className="col-10 col-sm-11 col-md-12 col-lg-10 col-xl-8 p-0 align-self-center">
-                                            <h3 className="fw-6">{title}</h3>
+                                            <h2 className="fw-8">{title}</h2>
                                             <p className="pr-xl-4">{children}</p>
                                         </div>
                                     </div>

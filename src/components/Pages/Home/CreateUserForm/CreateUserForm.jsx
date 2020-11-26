@@ -21,12 +21,7 @@ const defaultProps = {
 };
 
 function CreateUserForm(props) {
-    const calendarStyle = {
-        border: "2px solid #ced4da"
-    };
-    const maxYear = moment().format('YYYY') - 16;
 
-    // Hooks
     const dispatch = useDispatch();
     const cities = useSelector(state => state.cities);
     const { value: firstName, bind: bindFirstName, reset: resetFirstName } = useInput('');
@@ -43,6 +38,11 @@ function CreateUserForm(props) {
     const [errorForm, setErrorForm] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
+
+    const maxYear = moment().format('YYYY') - 16;
+    const calendarStyle = {
+        border: "2px solid #ced4da"
+    };
 
     useEffect(() => {
         if (iso !== '') {
@@ -66,10 +66,7 @@ function CreateUserForm(props) {
     const onFocusChange = ({ focused }) => {
         setCalendarFocused(focused);
     };
-    
-    /**
-     * Renders multiple options of countries
-     */
+
     function renderCountriesList() {
         const countries = props.countries;
         return countries.map((country, i) => (
@@ -160,7 +157,7 @@ function CreateUserForm(props) {
                     <SingleDatePicker
                         date={birthdate}
                         startDatePlaceholder="Date"
-                        startDate={moment().subtract(16, "years")}
+                        startDate={moment().subtract(28, "years")}
                         maxDate={new Date(maxYear, 12, 31)}
                         onDateChange={onDateChange}
                         focused={calendarFocused}
