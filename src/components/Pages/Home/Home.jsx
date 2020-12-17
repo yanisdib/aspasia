@@ -20,6 +20,7 @@ function Home(props) {
     console.log(countries);
     const onSubmit = (user) => {
         props.startCreateUserWithEmailAndPassword(user);
+        props.history.push('/create-history');
         console.log(user);
     };
     return (

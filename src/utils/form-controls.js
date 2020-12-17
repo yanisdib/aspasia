@@ -1,5 +1,5 @@
 export function checkEmail(email) {
-    const regexEmail = /^S*[a-zA-Z0-9!@)(.]{1,}$/g;
+    const regexEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g;
     const isMatching = regexEmail.test(email);
     return isMatching;
 };

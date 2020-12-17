@@ -7,6 +7,11 @@ export default function usersReducer(state = usersDefaultState, action) {
                 ...state,
                 action.user
             ];
+        case 'CREATE_USER_PROFILE':
+            return [
+                ...state,
+                action.profile
+            ];
         default:
             return state;
     };
