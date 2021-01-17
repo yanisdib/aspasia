@@ -8,7 +8,6 @@ import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 
 import './assets/style/style.scss';
-import './index.scss';
 import { startGetCountries } from './actions/countries';
 
 const store = configureStore();

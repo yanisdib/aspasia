@@ -25,9 +25,12 @@ export const startGetCities = (iso) => {
                 method: 'GET',
                 url: 'https://referential.p.rapidapi.com/v1/city',
                 params: {
-                    fields: 'iso_a2,state_code,state_hasc,timezone,timezone_offset',
+                    fields: 'iso_a2,state_code,state_hasc,key',
                     iso_a2: iso.substring(0, 2),
-                    limit: '9999',
+                    // UPDATE: limit can't go higher than 250 results now
+                    // so I either have to switch to another API or edit the function
+                    // to get results based on a string given by user
+                    limit: '9999', 
                     sort: 'name'
                 },
                 headers: {

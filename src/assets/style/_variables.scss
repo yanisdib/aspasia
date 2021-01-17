@@ -30,14 +30,14 @@ $success-color: #34a853;
 **/
 $main-font: "Poppins", sans-serif;
 $heading-font: "Poppins", sans-serif;
-$subtitle-font: "Roboto", sans-serif;
-$button-font: "Roboto", sans-serif;
+$subtitle-font: "Poppins", sans-serif;
+$button-font: "Poppins", sans-serif;
 
 /**
 * Container: Defines a container size and other custom settings
 **/
 
-$container-width: 1450px;
+$container-width: 1150px;
 $max-width: $container-width;
 
 
@@ -45,6 +45,7 @@ $max-width: $container-width;
 * Sizes: Defines sizes of elements
 **/
 
-$content-size: smaller;
+$content-size: 0.9rem;
+
 
 

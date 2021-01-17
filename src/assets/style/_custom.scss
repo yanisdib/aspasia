@@ -2,123 +2,169 @@
 @import "./variables";
 
 @media (min-width: 1200px) {
-    .container {
-        max-width: $container-width;
-    }
+  .container {
+    max-width: $container-width;
+  }
 }
 .row {
-    margin: auto;
+  margin: auto;
 }
 
 //*** GLOBAL ***//
 
 html,
 body {
-    font-family: $main-font;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    color: $primary-color;
+  font-family: $main-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  color: $primary-color;
 }
 
 a {
+  color: $primary-color;
+  &:hover {
+    text-decoration: none;
     color: $primary-color;
-    &:hover {
-        text-decoration: none;
-        color: $primary-color;
-        cursor: pointer;
-    }
+    cursor: pointer;
+  }
 }
 
 p {
-    font-size: $content-size;
-    color: $content-color;
+  font-size: $content-size;
+  color: $content-color;
 }
 
 //*** REACT GOOGLE DATEPICKER ***//
 
 .react-google-flight-datepicker {
-    .date-picker {
-        position: relative;
-        border-radius: 4px;
-        background: white;
-        padding: 0px;
-        .date-picker-input {
-            border: 2px solid #ced4da;
-            border-radius: 0.25rem;
-        }
-
-        .selected-date {
-            font-size: 1rem;
-            color: #6c757d;
-        }
+  .date-picker {
+    position: relative;
+    border-radius: 4px;
+    background: white;
+    padding: 0px;
+    .date-picker-input {
+      border: 2px solid #ced4da;
+      border-radius: 0.25rem;
     }
+
+    .selected-date {
+      font-size: 1rem;
+      color: #6c757d;
+    }
+  }
 }
 
 //*** BUTTONS ***//
 
 .btn {
-    font-family: $button-font;
-    padding: 0.45em 1.1em;
-    font-size: 1rem;
-    &:hover {
-        background-color: inherit;
-    }
-    &:active {
-        background-color: inherit;
-    }
+  font-family: $button-font;
+  font-size: 1rem;
+  border-style: none;
+  border-radius: 50px;
+  padding: 7px 35px;
+}
+
+@-webkit-keyframes pop-in {
+  0% { opacity: 0; -webkit-transform: scale(0.5); }
+  100% { opacity: 1; -webkit-transform: scale(1); }
+  }
+  @-moz-keyframes pop-in {
+  0% { opacity: 0; -moz-transform: scale(0.5); }
+  100% { opacity: 1; -moz-transform: scale(1); }
+  }
+  @keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+  }
+
+.btn-tags {
+  min-width: 100px;
+  color: $secondary-color;
+  margin-left: 0 !important;
+  border: 1px $secondary-color solid;
+  animation-duration: 400ms;
+  animation-name: pop-in;
+  &:hover{
+    color: $danger-color;
+    border-color: $danger-color;
+  }
 }
 
 .btn-primary {
+  background-color: $secondary-color;
+  &:hover {
     background-color: $secondary-color;
-    border-style: none;
-    border-radius: 50px;
-    &:hover {
-        background-color: $secondary-color;
-    }
-    &:active {
-        background-color: $secondary-color !important;
-    }
+  }
+  &:active {
+    background-color: $secondary-color !important;
+  }
+}
+
+.btn-secondary {
+  background-color: $alternate-color;
+  color: #000;
+  &:hover {
+    background-color: $alternate-color;
+    color: #000;
+  }
+  &:active {
+    background-color: $alternate-color !important;
+    color: #000 !important;
+  }
+}
+
+.btn-success {
+  background-color: $success-color;
+  color: #ffffff;
+  &:hover {
+    background-color: $success-color;
+    color: #ffffff;
+  }
+  &:active {
+    background-color: $success-color !important;
+    color: #ffffff !important;
+  }
 }
 
 //*** HEADINGS ***//
 
 @for $i from 1 to 7 {
-    h#{$i} {
-        font-family: $heading-font;
-    }
+  h#{$i} {
+    font-family: $heading-font;
+  }
 }
 
 //*** FORMS ***//
 
 label {
-    font-weight: 500 !important;
+  font-weight: 500 !important;
 }
 
 .form-control {
-    border: 2px solid #ced4da;
-    &:focus {
-        border: 2px solid #1a73e8;
-        box-shadow: none;
-        background-color: #f4f8ff;
-        transition: background-color 15ms ease-in-out;
-    }
+  border: 2px solid #ced4da;
+  &:focus {
+    border: 2px solid #1a73e8;
+    box-shadow: none;
+    background-color: #f4f8ff;
+    transition: background-color 15ms ease-in-out;
+  }
 }
 
 //*** SVG ***//
 
 svg {
-    color: $content-color;
+  color: $content-color;
 }
 
 //*** CUSTOM CLASSES ***//
 
 // Initialize reusable height classes
 @for $i from 1 to 11 {
-    .h-#{$i} {
-        height: $i * 10% !important;
-    }
-    .mtb-#{$i} {
-        margin: $i * 50px 0px;
-    }
+  .h-#{$i} {
+    height: $i * 10% !important;
+  }
+  .mtb-#{$i} {
+    margin: $i * 50px 0px;
+  }
 }
