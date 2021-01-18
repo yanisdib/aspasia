@@ -8,10 +8,8 @@ import StepThree from "./StepThree/StepThree";
 function CreateUserProfileForm() {
   const [tags, setTags] = useState([]);
   const [error, setError] = useState("");
-  const [canSpeak, setCanSpeak] = useState([
-    { language: "", proficiency: "" },
-  ]);
-  const [isLearning, setIsLearning] = useState([]);
+  const [canSpeak, setCanSpeak] = useState([{ language: "", proficiency: "" }]);
+  const [isLearning, setIsLearning] = useState([{ language: "", proficiency: "" }]);
   const [biography, setBiography] = useState("");
   return (
     <WizardForm pages={3}>

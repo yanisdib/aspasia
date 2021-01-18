@@ -6,23 +6,21 @@ import AddSelectButton from "../../Button/AddSelectButton";
  * data (array of objects) have two properties =>
  * label (string) | values (func): renders a list of options
  */
-function SelectList({
-  data,
-  title,
-  hasMany,
-  selectedOptions,
-  setOptions,
-  onSecondChange,
-}) {
+function SelectList({ data, title, hasMany, selectedOptions, setOptions }) {
   const onFirstChange = (e) => {
     const i = parseInt(e.target.dataset.index);
     const selectedLanguage = e.target.value;
     let updatedOptions = [...selectedOptions];
     updatedOptions[i].language = selectedLanguage;
     setOptions(updatedOptions);
-    console.log(selectedLanguage);
-    console.log(selectedOptions);
-    console.log(i);
+  };
+
+  const onSecondChange = (e) => {
+    const i = parseInt(e.target.dataset.index);
+    const selectedProficiency = e.target.value;
+    let updatedOptions = [...selectedOptions];
+    updatedOptions[i].proficiency = selectedProficiency;
+    setOptions(updatedOptions);
   };
 
   const onAddElementClick = () => {

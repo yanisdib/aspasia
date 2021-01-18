@@ -14,8 +14,6 @@ function LanguagesStep(props) {
     return languageNameMap[code].name;
   });
 
-  const onSpokenProficiencyChange = (e) => {};
-
   const renderLanguagesOptions = () => {
     const languageOptions = languages.map((language) => {
       return <option value={language}>{language}</option>;
@@ -42,14 +40,14 @@ function LanguagesStep(props) {
         hasMany={true}
         selectedOptions={props.canSpeak}
         setOptions={props.setCanSpeak}
-        onSecondChange={onSpokenProficiencyChange}
       />
-      {/* <SelectList
+      <SelectList
         data={optionsData}
         title="I'm learning"
         hasMany={true}
-        isLearning={props.isLearning}
-      /> */}
+        selectedOptions={props.isLearning}
+        setOptions={props.setIsLearning}
+      /> 
     </>
   ) : null;
 }
