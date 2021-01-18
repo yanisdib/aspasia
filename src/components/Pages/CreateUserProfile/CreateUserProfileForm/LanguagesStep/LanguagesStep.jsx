@@ -15,37 +15,10 @@ function LanguagesStep(props) {
   });
 
   const onSpokenLanguageChange = (e) => {
-    let spokenLanguages = [...props.canSpeak];
-    const index = parseInt(e.target.dataset.index);
-    let selectedLanguage = e.target.value;
-    if (index === 0 || spokenLanguages[index]) {
-      props.setCanSpeak([
-        {
-          ...spokenLanguages[index],
-          language: selectedLanguage,
-        },
-      ]);
-    } else {
-      props.setCanSpeak([...spokenLanguages, { language: selectedLanguage }]);
-    }
+
   };
 
   const onSpokenProficiencyChange = (e) => {
-    let spokenProficiencies = [...props.canSpeak];
-    const index = parseInt(e.target.dataset.index);
-    console.log(spokenProficiencies);
-    const selectedLanguage = props.canSpeak[index] ? props.canSpeak[index].language : "";
-    let selectedProficiency = e.target.value;
-    if (index === 0 || spokenProficiencies[index]) {
-      props.setCanSpeak([
-        { ...spokenProficiencies[index], proficiency: selectedProficiency },
-      ]);
-    } else {
-      props.setCanSpeak([
-        ...spokenProficiencies,
-        { proficiency: selectedProficiency },
-      ]);
-    }
   };
 
   const renderLanguagesOptions = () => {

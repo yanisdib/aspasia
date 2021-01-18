@@ -9,7 +9,7 @@ function CreateUserProfileForm() {
   const [tags, setTags] = useState([]);
   const [error, setError] = useState("");
   const [canSpeak, setCanSpeak] = useState([
-    { language: "English", proficiency: "Fluent" },
+    { language: "", proficiency: "" },
   ]);
   const [isLearning, setIsLearning] = useState([]);
   const [biography, setBiography] = useState("");
