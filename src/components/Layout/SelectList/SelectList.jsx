@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import AddSelectButton from "../../Button/AddSelectButton";
 
 /**
@@ -12,64 +11,34 @@ function SelectList({
   title,
   hasMany,
   selectedOptions,
-  onFirstChange,
+  setOptions,
   onSecondChange,
 }) {
-  const [elements, setElements] = useState([]); // Array of new values added by user
-  const [count, setCount] = useState(
-    selectedOptions.length > 0 ? selectedOptions.length : 1
-  );
-  useEffect(() => {
-    getElements();
-  }, [count]);
-
-  const onAddElementClick = () => {
-    {
-      /*  const index = elements.length + 1;
-    console.log(index);
-    const element = (
-      <div className="form-row mt-3">
-        <div className="col">
-          <select
-            className="form-control"
-            data-index={index}
-            value=""
-            onChange={onFirstChange}
-          >
-            <option value="">Select an option {index}</option>
-            {data[0].values}
-          </select>
-        </div>
-        <div className="col">
-          <select
-            className="form-control"
-            data-index={index}
-            value=""
-            onChange={onSecondChange}
-          >
-            <option key={``} value="">
-              Select an option
-            </option>
-            {data[1].values}
-          </select>
-        </div>
-      </div>
-    );
-    setElements([...elements, element]); // add new element to the existing ones*/
-    }
-    setCount(count + 1);
+  const onFirstChange = (e) => {
+    const i = parseInt(e.target.dataset.index);
+    const selectedLanguage = e.target.value;
+    let updatedOptions = [...selectedOptions];
+    updatedOptions[i].language = selectedLanguage;
+    setOptions(updatedOptions);
+    console.log(selectedLanguage);
+    console.log(selectedOptions);
+    console.log(i);
   };
 
-  const getElements = () => {
-    for (let i = 0; i < count; i++) {
+  const onAddElementClick = () => {
+    setOptions([...selectedOptions, { language: "", proficiency: "" }]);
+  };
+
+  const renderElements = () => {
+    return selectedOptions.map((element, i) => {
       let margin = i === 0 ? "" : "mt-3";
-      const element = (
+      return (
         <div className={`form-row ${margin}`}>
           <div className="col">
             <select
               className="form-control"
               data-index={i}
-              value={selectedOptions[i] ? selectedOptions[i].language : ""}
+              value={element.language}
               onChange={onFirstChange}
             >
               <option value="">Select an option</option>
@@ -80,7 +49,7 @@ function SelectList({
             <select
               className="form-control"
               data-index={i}
-              value={selectedOptions[i] ? selectedOptions[i].proficiency : ""}
+              value={element.proficiency}
               onChange={onSecondChange}
             >
               <option key={``} value="">
@@ -91,8 +60,7 @@ function SelectList({
           </div>
         </div>
       );
-      setElements([...elements, element]);
-    }
+    });
   };
 
   return (
@@ -106,7 +74,7 @@ function SelectList({
             <AddSelectButton onClick={onAddElementClick} />
           ) : null}
         </div>
-        {elements}
+        {renderElements()}
       </div>
     </div>
   );
