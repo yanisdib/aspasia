@@ -1,4 +1,5 @@
 import './_header.scss';
+import { Link } from 'react-router-dom';
 function Header() {
     return (
         <div className="row header align-content-center">
@@ -21,7 +22,7 @@ function Header() {
             <div className="d-none d-sm-none col-md-7 col-lg-7 col-xl-7 d-md-flex d-lg-flex d-xl-flex text-center justify-content-end align-items-center">
                 <a className="p-4 fw-5">Help</a>
                 <a className="p-4 fw-5">Contact</a>
-                <a className="p-4 fw-5">Create an account</a>
+                <Link to="/sign-up" className="p-4 fw-5">Create an account</Link>
                 <a className="p-4 fw-5">Sign in</a>
             </div>
         </div>

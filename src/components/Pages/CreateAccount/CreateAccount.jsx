@@ -3,7 +3,6 @@ import CreateAccountForm from "./CreateAccountForm/CreateAccountForm";
 import { startCreateUserWithEmailAndPassword } from "../../../actions/users";
 
 import bgUrl from "../../../assets/images/bg_account_900x1080.jpg";
-import { withRouter } from "react-router";
 
 function CreateAccount({ history }) {
   const background = {
@@ -28,4 +27,4 @@ function CreateAccount({ history }) {
   );
 }
 
-export default withRouter(CreateAccount);
+export default CreateAccount;
