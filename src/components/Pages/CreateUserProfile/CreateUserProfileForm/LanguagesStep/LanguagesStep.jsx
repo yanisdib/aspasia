@@ -1,5 +1,5 @@
 import languageNameMap from "language-name-map/map";
-import SelectList from "../../../../Layout/SelectList/SelectList";
+import SelectList from "../../../../Form/SelectList/SelectList";
 
 function LanguagesStep(props) {
   const proficiencies = [

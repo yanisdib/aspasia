@@ -1,21 +1,29 @@
 @import "../../../assets/style/variables";
 
 .burst {
-    height: 700px;
-    .burst-title {
-        font-family: $heading-font;
-        font-size: 11em;
-        color: $primary-color;
-    }
-    .burst-banner {
-        background-position: center;
-        //background-size: cover;
-    }
+  height: 700px;
+  .burst-title {
+    font-family: $heading-font;
+    font-size: 11em;
+    color: $primary-color;
+  }
+  .burst-banner {
+    background-position: center;
+    //background-size: cover;
+  }
 }
 .burst-heading {
-    // background-image: url(../../../assets/images/bg_pals_900x1080.jpg);
-    background-repeat: no-repeat;
-    background-position-y: -30px;
-    background-position-x: 30%;
-    background-size: contain;
+  // background-image: url(../../../assets/images/bg_pals_900x1080.jpg);
+  background-repeat: no-repeat;
+  background-position-y: -30px;
+  background-position-x: 30%;
+  background-size: contain;
+}
+
+.b-present {
+  background: black;
+  height: 900px;
+  h2, p {
+    color: $alternate-color;
+  }
 }

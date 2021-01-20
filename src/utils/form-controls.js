@@ -1,11 +1,11 @@
 export function checkEmail(email) {
-    const regexEmail = /^([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+)([a-zA-Z]{2,5})$/g;
+    const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const isMatching = regexEmail.test(email);
     return isMatching;
 };
 
 export function checkPassword(a) {
-    const regexPassword = /^S*[a-zA-Z0-9!@#$%^&*)(+=._-]{8,}$/g;
+    const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
     const isMatching = regexPassword.test(a);
     return isMatching;
 };
