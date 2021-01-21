@@ -8,6 +8,7 @@ function CreateAccount({ history }) {
   const background = {
     backgroundImage: `url(${bgUrl})`,
     backgroundPosition: "center",
+    backgroundSize: "cover"
   };
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
@@ -16,10 +17,10 @@ function CreateAccount({ history }) {
     history.push("/create-profile");
   };
   return (
-    <div className="container">
+    <div className="container mt-3">
       <div className="row justify-content-center">
         <div className="col-6" style={background}></div>
-        <div className="col-5 offset-1">
+        <div className="col-5 signup-form offset-1">
           <CreateAccountForm onSubmit={onSubmit} countries={countries} />
         </div>
       </div>

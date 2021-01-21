@@ -13,17 +13,9 @@
   }
 }
 .burst-heading {
-  // background-image: url(../../../assets/images/bg_pals_900x1080.jpg);
   background-repeat: no-repeat;
   background-position-y: -30px;
   background-position-x: 30%;
   background-size: contain;
-}
-
-.b-present {
-  background: black;
-  height: 900px;
-  h2, p {
-    color: $alternate-color;
-  }
+  height: 720px;
 }
