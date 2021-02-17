@@ -1,6 +1,8 @@
 # Google Pals
 **_Penpals network application using Google design_**
 
+Showcase : https://www.dropbox.com/s/qqb3vl742wac5dk/Google%20Pals.mp4?dl=0
+
 
 ## **Features**
 _Main features available to users_
