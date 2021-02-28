@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-
+import { firebase } from './firebase/firebase';
+import { startGetCountries } from './actions/countries';
+import { login, logout } from './actions/auth';
 
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 
 import './assets/style/style.scss';
-import { startGetCountries } from './actions/countries';
 
 const store = configureStore();
-
 store.dispatch(startGetCountries()).then(() => {
   ReactDOM.render(
     <React.StrictMode>
@@ -22,7 +22,6 @@ store.dispatch(startGetCountries()).then(() => {
     document.getElementById('root')
   );
 });
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
