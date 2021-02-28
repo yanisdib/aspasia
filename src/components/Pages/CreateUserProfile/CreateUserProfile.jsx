@@ -1,36 +1,32 @@
-import CreateUserProfileForm from "./CreateUserProfileForm/CreateUserProfileForm";
-import background from "../../../assets/images/bg_profile_900x1080.jpg";
+import { useDispatch } from 'react-redux';
+import { startCreateUserProfile } from '../../../actions/user';
+import CreateUserProfileForm from './CreateUserProfileForm/CreateUserProfileForm';
+import background from '../../../assets/images/bg_profile_900x1080.jpg';
 
-function CreateUserProfile() {
+function CreateUserProfile(props) {
   const backgroundStyle = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
-    backgroundPositionY: "center",
-    height: "600px",
+    backgroundSize: 'cover',
+    backgroundPositionY: 'center',
+    height: '600px',
+  };
+  const dispatch = useDispatch();
+  const history = props.history;
+  const onSubmit = (profile) => {
+    dispatch(
+      startCreateUserProfile(profile)
+    );
+    history.push('/');
   };
   return (
-    <div className="container">
-      <div className="row justify-content-between">
-        <div className="col-6">
-          <div className="row mb-5">
-            <div className="col-10 p-0 align-right">
-              <h3 className="fw-6">Before you go further...</h3>
-              <p className="fw-4">
-                To make sure you find the best people out there, we need you to
-                complete your profile. We will take care of the rest once you're done.
-              </p>
-            </div>
-          </div>
-          <div className="row justify-content-end mt-5">
-            <div className="col-10" style={backgroundStyle}></div>
-          </div>
+    <div className='container mt-2 mb-5'>
+      <div className='row justify-content-between align-self-center form-border'>
+        <div className='col-7'>
+          <CreateUserProfileForm pages={3} onSubmit={onSubmit} />
         </div>
-        <div className="col-5">
-          <div className="row h-1">
-            <div className="col-9 p-0 align-right"></div>
-          </div>
-          <div className="row">
-            <CreateUserProfileForm />
+        <div className='col-5 align-self-center'>
+          <div className='row justify-content-end'>
+            <div className='col-12' style={backgroundStyle}></div>
           </div>
         </div>
       </div>

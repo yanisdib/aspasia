@@ -38,8 +38,8 @@ function TagsInput({ id, title, label, tags, setTags, error, setError }) {
 
   return (
     <>
-      <div className="form-group mb-3">
-        <h5 className="fw-6 blue mb-4 mt-5">{title}</h5>
+      <div className="form-group mb-3 mt-4">
+        <h5 className="fw-6 blue mb-4 mt-3">{title}</h5>
         <label htmlFor={id}>{label}</label>
         <input
           type="text"

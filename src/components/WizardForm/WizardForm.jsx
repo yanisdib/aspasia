@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import Button from "../Button/Button";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import Button from '../Button/Button';
+import PropTypes from 'prop-types';
+import './_wizard-form.scss';
 
-function WizardForm({ children, pages }) {
+function WizardForm({ children, pages, onSubmit }) {
   const [currentStep, setCurrentStep] = useState(1);
   const onPreviousButtonClick = () => {
     setCurrentStep(currentStep > 1 ? currentStep - 1 : 1);
@@ -15,7 +16,7 @@ function WizardForm({ children, pages }) {
   const renderPreviousButton = () => {
     if (currentStep > 1) {
       return (
-        <Button type="secondary" mr={3} onClick={onPreviousButtonClick}>
+        <Button style='secondary' marginRight={3} onClick={onPreviousButtonClick}>
           Previous
         </Button>
       );
@@ -27,7 +28,7 @@ function WizardForm({ children, pages }) {
   const renderNextButton = () => {
     if (currentStep < pages) {
       return (
-        <Button type="primary" onClick={onNextButtonClick}>
+        <Button style='primary' onClick={onNextButtonClick}>
           Next
         </Button>
       );
@@ -37,25 +38,30 @@ function WizardForm({ children, pages }) {
   };
 
   const renderSubmitButton = () => {
-    if ((currentStep === pages)) {
+    if (currentStep === pages) {
       return (
         <input
-          type="submit"
-          className="btn btn-primary fw-4 mt-4"
-          value="Submit"
+          type='submit'
+          className='btn btn-primary fw-4 mt-4'
+          value='Submit'
         />
       );
     }
   };
 
   return (
-    <form className="mb-5" onSubmit={undefined}>
+    <form className='mb-5' onSubmit={onSubmit}>
+      <h6 className='step-counter fw-6 mt-5'>
+        Step {currentStep}/{pages}
+      </h6>
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, { currentStep });
       })}
-      {renderPreviousButton()}
-      {renderNextButton()}
-      {renderSubmitButton()}
+      <div className='form-row mb-3 justify-content-between'>
+        {renderPreviousButton()}
+        {renderNextButton()}
+        {renderSubmitButton()}
+      </div>
     </form>
   );
 }

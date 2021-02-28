@@ -58,9 +58,9 @@ function SelectList({ data, title, hasMany, selectedOptions, setOptions }) {
   };
 
   return (
-    <div className="form-row mt-5">
+    <div className="form-row">
       <div className="col-12">
-        <div className="form-row">
+        <div className="form-row pt-3">
           <div className="col-10 mb-4">
             <h5 className="fw-6 blue">{title}</h5>
           </div>
