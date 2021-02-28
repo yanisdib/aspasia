@@ -44,7 +44,7 @@ function Home() {
           <div className="row" style={introText}>
             <div className="col-12 text-center">
               <h2 className="fw-6">Welcome to Google Pals</h2>
-              <Button type="primary" onClick={onStartButtonClick}>Start for free</Button>
+              <Button style="primary" onClick={onStartButtonClick}>Start for free</Button>
             </div>
           </div>
         </div>
@@ -55,8 +55,7 @@ function Home() {
         isReversed={false}
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum
-        mattis odio vel viverra. Pellentesque tempus lectus et volutpat
-        vehicula.
+        mattis odio vel viverra. 
       </PresentationLayout>
       <VideoPresentation
         title="Reach people beyond the frontiers"
@@ -73,8 +72,7 @@ function Home() {
         isReversed={true}
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum
-        mattis odio vel viverra. Pellentesque tempus lectus et volutpat
-        vehicula.
+        mattis odio vel viverra. 
       </PresentationLayout>
     </>
   );
@@ -90,12 +88,5 @@ Home.propTypes = {
 Home.defaultProps = {
   countries: {},
 };
-
-{
-  /*const mapDispatchToProps = (dispatch) => ({
-  startCreateUserWithEmailAndPassword: (user) =>
-    dispatch(startCreateUserWithEmailAndPassword(user)),
-});*/
-}
 
 export default Home;
