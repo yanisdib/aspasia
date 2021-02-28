@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import CreateAccountForm from "./CreateAccountForm/CreateAccountForm";
-import { startCreateUserWithEmailAndPassword } from "../../../actions/users";
+import { startCreateUserWithEmailAndPassword } from "../../../actions/user";
 
 import bgUrl from "../../../assets/images/bg_account_900x1080.jpg";
 
@@ -17,12 +17,12 @@ function CreateAccount({ history }) {
     history.push("/create-profile");
   };
   return (
-    <div className="container mt-3">
-      <div className="row justify-content-center">
-        <div className="col-6" style={background}></div>
-        <div className="col-5 signup-form offset-1">
+    <div className="container mt-5 mb-5">
+      <div className="row justify-content-center form-border">
+        <div className="col-6">
           <CreateAccountForm onSubmit={onSubmit} countries={countries} />
         </div>
+        <div className="col-5 offset-1" style={background}></div>
       </div>
     </div>
   );
