@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { firebase } from './firebase/firebase';
 import { startGetCountries } from './actions/countries';
-import { login, logout } from './actions/auth';
-
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
