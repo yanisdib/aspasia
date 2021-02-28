@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import Button from '../../../Button/Button';
-
 function LoginForm(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRememberChecked, setIsRememberChecked] = useState(false);
-  const [error, setError] = useState('');
   const onEmailChange = (e) => {
     const email = e.target.value;
     setEmail(email);
@@ -16,7 +13,7 @@ function LoginForm(props) {
     const password = e.target.value;
     setPassword(password);
   };
-  const onRememberChange = (e) => {
+  const onRememberCheckedChange = (e) => {
     const isChecked = e.target.checked;
     setIsRememberChecked(isChecked);
   };
@@ -25,6 +22,7 @@ function LoginForm(props) {
     props.onSubmit({
       email: email,
       password: password,
+      isRemember: isRememberChecked
     });
   };
   return (
@@ -61,7 +59,7 @@ function LoginForm(props) {
           type='checkbox'
           className='mr-2'
           checked={isRememberChecked}
-          onChange={onRememberChange}
+          onChange={onRememberCheckedChange}
         />
         <label htmlFor='checkboxRememberUser'>Se souvenir de moi</label>
       </div>

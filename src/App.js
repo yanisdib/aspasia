@@ -7,7 +7,7 @@ import 'react-google-flight-datepicker/dist/main.css';
 function App(props) {
   const dispatch = useDispatch();
   useEffect(() => {
-    const uid = localStorage.getItem('user');
+    const uid = localStorage.getItem('user') || sessionStorage.getItem('user');
     if (!!uid) {
       dispatch(login(uid));
     }

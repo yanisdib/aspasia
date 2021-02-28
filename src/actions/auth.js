@@ -11,7 +11,10 @@ export function login(uid) {
   };
 }
 
-export function startLogin(authProvider = null, { email, password }) {
+export function startLogin(
+  authProvider = null,
+  { email, password, isRemember }
+) {
   try {
     return async (dispatch) => {
       const authentication = () => {
@@ -27,7 +30,9 @@ export function startLogin(authProvider = null, { email, password }) {
       try {
         const res = await authentication();
         const { uid } = res.user;
-        localStorage.setItem('user', uid);
+        isRemember === true
+          ? localStorage.setItem('user', uid)
+          : sessionStorage.setItem('user', uid);
         return dispatch(login(uid));
       } catch (error) {
         console.log(`${error.code}: ${error.message}`);
@@ -56,6 +61,7 @@ export const startLogout = () => {
       // Sign-out successful
       dispatch(logout());
       localStorage.removeItem('user');
+      sessionStorage.removeItem('user');
       console.log('user successfully logged out!');
     } catch (error) {
       // An error happened
