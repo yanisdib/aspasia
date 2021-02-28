@@ -13,7 +13,7 @@ function PresentationLayout({ images, title, isReversed, children }) {
   ];
 
   return (
-    <div className="container">
+    <div className={`container`}>
       <div className="row app-detail justify-content-between mtb-3">
         {isReversed ? (
           <>
