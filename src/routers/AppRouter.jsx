@@ -20,6 +20,7 @@ function AppRouter() {
           <Route path='/' component={App} exact={true} />
           <Route path='/sign-up' component={CreateAccount} />
           <PrivateRoute path='/create-profile' component={CreateUserProfile} />
+          <PrivateRoute path='/p/:id' component={Profile} />
           <Route path='/login' component={Login} />
         </Switch>
       </main>
