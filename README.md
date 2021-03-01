@@ -17,7 +17,7 @@ _Main features available to users_
 #### User features
 
 - [x] Create an account
-- [ ] Authentication (Email/Password, Google, Facebook)
+- [x] Authentication (Email/Password, Google, Facebook)
 - [ ] Add, edit, remove user's profile (profile/cover picture, personal info, languages etc.)
 - [ ] Save profile preferences (criterias of visibility)
 - [ ] Add, edit, remove additional pictures to profile
