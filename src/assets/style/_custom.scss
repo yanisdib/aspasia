@@ -67,17 +67,35 @@ p {
 }
 
 @-webkit-keyframes pop-in {
-  0% { opacity: 0; -webkit-transform: scale(0.5); }
-  100% { opacity: 1; -webkit-transform: scale(1); }
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
   }
-  @-moz-keyframes pop-in {
-  0% { opacity: 0; -moz-transform: scale(0.5); }
-  100% { opacity: 1; -moz-transform: scale(1); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
   }
-  @keyframes pop-in {
-  0% { opacity: 0; transform: scale(0.5); }
-  100% { opacity: 1; transform: scale(1); }
+}
+@-moz-keyframes pop-in {
+  0% {
+    opacity: 0;
+    -moz-transform: scale(0.5);
   }
+  100% {
+    opacity: 1;
+    -moz-transform: scale(1);
+  }
+}
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 .btn-tags {
   min-width: 100px;
@@ -87,7 +105,7 @@ p {
   border: 1px $alternate-color solid;
   animation-duration: 400ms;
   animation-name: pop-in;
-  &:hover{
+  &:hover {
     color: $secondary-color;
     background-color: $alternate-color;
     border-color: $alternate-color;
@@ -130,6 +148,44 @@ p {
   }
 }
 
+.btn-action{width: auto;}
+
+.btn-action-blue {
+  background-color: $primary-btn-action;
+  color: $primary-action-color;
+  &:hover {
+    text-decoration: none !important;
+    color: $primary-action-color;
+  }
+  svg {
+    color: inherit !important;
+  }
+}
+
+.btn-action-green {
+  background-color: $secondary-btn-action;
+  color: $secondary-action-color;
+  &:hover {
+    text-decoration: none !important;
+    color: $secondary-action-color;
+  }
+  svg {
+    color: inherit !important;
+  }
+}
+
+.btn-action-info {
+  background-color: $info-btn-action;
+  color: $info-action-color;
+  &:hover {
+    text-decoration: none !important;
+    color: $info-action-color !important;
+  }
+  svg {
+    color: inherit !important;
+  }
+}
+
 //*** HEADINGS ***//
 
 @for $i from 1 to 7 {
@@ -147,7 +203,7 @@ label {
 .form-control {
   border: 2px solid #ced4da;
   &:focus {
-    border: 2px solid #1967D2;
+    border: 2px solid #1967d2;
     box-shadow: none;
     background-color: #f4f8ff;
     transition: background-color 15ms ease-in-out;
@@ -172,12 +228,12 @@ svg {
   }
 }
 
-form{
-  a{
+form {
+  a {
     color: $secondary-color;
     font-weight: 500;
     font-size: 0.9rem;
-    &:hover{
+    &:hover {
       color: $primary-color;
     }
   }

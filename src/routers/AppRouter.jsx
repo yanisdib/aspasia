@@ -17,11 +17,11 @@ function AppRouter() {
       <Header />
       <main>
         <Switch>
-          <Route path='/' component={App} exact={true} />
-          <Route path='/sign-up' component={CreateAccount} />
-          <PrivateRoute path='/create-profile' component={CreateUserProfile} />
-          <PrivateRoute path='/p/:id' component={Profile} />
-          <Route path='/login' component={Login} />
+          <Route path="/" component={App} exact={true} />
+          <Route path="/sign-up" component={CreateAccount} />
+          <PrivateRoute path="/create-profile" component={CreateUserProfile} />
+          <Route path="/p/:id" component={Profile} />
+          <Route path="/login" component={Login} />
         </Switch>
       </main>
     </BrowserRouter>
