@@ -5,6 +5,7 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import PersonAddRoundedIcon from '@material-ui/icons/PersonAddRounded';
 import ChatRoundedIcon from '@material-ui/icons/ChatRounded';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
+import profilePicture from '../../../assets/images/profile_picture_original.jpg';
 
 function Profile(props) {
   const bgCover = {
@@ -12,18 +13,32 @@ function Profile(props) {
     backgroundPositionX: 'center',
     backgroundSize: 'cover'
   }
+  const profileThumbnail = {
+    backgroundImage: `url(${profilePicture})`,
+    backgroundPositionY: 'center',
+    backgroundSize: 'cover'
+  }
   return (
     <div className="container">
       <div className="row profile mb-5">
         <div className="col-12">
-          <div className="row profile-cover" style={bgCover}>
-            <div className="col-5 profile-music text-center">
-            </div>
-          </div>
-          <div className="row profile-username mt-5 mb-5">
-            <div className="col-12 text-center">
-              <h4 className="fw-6">John Doe <VerifiedUserIcon /></h4>
-              <h6 className="fw-4 gray">@{props.match.params.id}</h6>
+          <div className="row profile-header">
+            <div className="col-12">
+              <div className="row profile-cover" style={bgCover}>
+                <div className="col-5 profile-music text-center">
+                </div>
+              </div>
+              <div className="row profile-picture position-absolute">
+                <div className="col-1 profile-picture-thumbnail m-auto" style={profileThumbnail}>
+                </div>
+              </div>
+              <div className="row profile-username mt-5 mb-1">
+                <div className="col-12 pt-5 text-center">
+                  <h4 className="fw-6">John Doe <VerifiedUserIcon /></h4>
+                  <h6 className="fw-4 gray">@{props.match.params.id}</h6>
+                </div>
+              </div>
+
             </div>
           </div>
           <div className="row profile-actions text-center mt-5 mb-5 w-75">
