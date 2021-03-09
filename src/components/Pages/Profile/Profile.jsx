@@ -1,11 +1,20 @@
+import { startGetCurrentUser } from '../../../actions/user';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+
 import './_profile.scss';
 import cover from '../../../assets/images/monet_bg.jpg';
 import ActionButton from '../../Button/ActionButton';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import PersonAddRoundedIcon from '@material-ui/icons/PersonAddRounded';
 import ChatRoundedIcon from '@material-ui/icons/ChatRounded';
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import profilePicture from '../../../assets/images/profile_picture_original.jpg';
+import ProfileLanguages from './ProfileLanguages/ProfileLanguages';
+import ProfileHobbies from './ProfileHobbies/ProfileHobbies';
+import ProfileFavoriteMusic from './ProfileFavoriteMusic/ProfileFavoriteMusic';
+
 
 function Profile(props) {
   const bgCover = {
@@ -18,7 +27,15 @@ function Profile(props) {
     backgroundPositionY: 'center',
     backgroundSize: 'cover'
   }
-  return (
+  const dispatch = useDispatch();
+  const uid = useSelector(state => state.auth.uid);
+  useEffect(() => {
+    dispatch(startGetCurrentUser(uid));
+  }, [])
+  const currentUser = useSelector(state => state.user);
+  const { birthdate, city, country, createdAt, firstName, lastName, email, isSuper, isVerified, profile, username } = currentUser;
+  console.log(currentUser);
+  return Object.keys(currentUser).length > 0 ? (
     <div className="container">
       <div className="row profile mb-5">
         <div className="col-12">
@@ -34,7 +51,7 @@ function Profile(props) {
               </div>
               <div className="row profile-username mt-5 mb-1">
                 <div className="col-12 pt-5 text-center">
-                  <h4 className="fw-6">John Doe <VerifiedUserIcon /></h4>
+                  <h4 className="fw-6">{`${firstName} ${lastName} `}<VerifiedUserIcon /></h4>
                   <h6 className="fw-4 gray">@{props.match.params.id}</h6>
                 </div>
               </div>
@@ -54,13 +71,16 @@ function Profile(props) {
           </div>
           <div className="row mt-5 w-75">
             <div className="col-12 text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor neque at odio semper eleifend. Duis porta egestas nunc et euismod. Sed convallis congue porta.
+              {profile.biography}
             </div>
           </div>
+          <ProfileLanguages {...profile} />
+          <ProfileHobbies {...profile} />
+          <ProfileFavoriteMusic {...profile} />
         </div>
       </div>
     </div>
-  );
+  ) : (<LoadingSpinner />);
 };
 
 export default Profile;

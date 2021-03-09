@@ -24,6 +24,7 @@ function LoginForm(props) {
       password: password,
       isRemember: isRememberChecked
     });
+    console.log(password);
   };
   return (
     <form onSubmit={onSubmit}>
