@@ -3,7 +3,7 @@ import { firebase, database } from '../firebase/firebase';
 
 export const createUserWithEmailAndPassword = (user) => ({
   type: 'CREATE_USER_WITH_EMAIL_AND_PASSWORD',
-  user,
+  user
 });
 
 /**
@@ -161,15 +161,16 @@ export const startCreateUserProfile = (profileDefaultData = {}) => {
   };
 };
 
-export const getUser = (user) => ({
-  type: 'GET_USER',
-  user,
+export const getCurrentUser = (user) => ({
+  type: 'GET_CURRENT_USER',
+  user
 });
 
-export const startGetUser = (uid) => {
-  return async (dispatch) => {
-    const res = await database.ref(`users/${uid}`);
-    console.log(res);
-    return dispatch(getUser());
+export const startGetCurrentUser = (uid) => {
+  return (dispatch) => {
+    return database.ref(`users/${uid}`).on('value', (snapshot) => {
+      const data = snapshot.val();
+      dispatch(getCurrentUser(data));
+    });
   };
 };

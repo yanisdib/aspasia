@@ -1,4 +1,4 @@
-const usersDefaultState = [];
+const usersDefaultState = {};
 
 export default function usersReducer(state = usersDefaultState, action) {
   switch (action.type) {
@@ -8,7 +8,10 @@ export default function usersReducer(state = usersDefaultState, action) {
     case 'CREATE_USER_PROFILE':
       const profile = action.profile;
       return { ...state, profile };
+    case 'GET_CURRENT_USER':
+      const user = action.user;
+      return user;
     default:
       return state;
-  }
-}
+  };
+};
