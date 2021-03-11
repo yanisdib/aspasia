@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { startCreateUserWithEmailAndPassword } from "../../../actions/currentUser";
+import { startGetCountries } from '../../../actions/countries';
 import CreateAccountForm from "./CreateAccountForm/CreateAccountForm";
-import { startCreateUserWithEmailAndPassword } from "../../../actions/user";
-
 import bgUrl from "../../../assets/images/bg_account_900x1080.jpg";
 
 function CreateAccount({ history }) {
@@ -10,7 +11,11 @@ function CreateAccount({ history }) {
     backgroundPosition: "center",
     backgroundSize: "cover"
   };
+
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(startGetCountries());
+  }, [])
   const countries = useSelector((state) => state.countries);
   const onSubmit = (user) => {
     dispatch(startCreateUserWithEmailAndPassword(user));
