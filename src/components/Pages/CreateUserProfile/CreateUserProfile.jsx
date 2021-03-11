@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { startCreateUserProfile } from '../../../actions/user';
+import { startCreateUserProfile } from '../../../actions/currentUser';
 import CreateUserProfileForm from './CreateUserProfileForm/CreateUserProfileForm';
 import background from '../../../assets/images/bg_profile_900x1080.jpg';
 
