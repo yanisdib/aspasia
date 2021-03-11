@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import userReducer from '../reducers/user';
 import authReducer from '../reducers/auth';
+import currentUserReducer from '../reducers/currentUser';
+import profileReducer from '../reducers/profile';
 import countriesReducer from '../reducers/countries';
 import citiesReducer from '../reducers/cities';
 
@@ -13,7 +14,8 @@ export default function configureStore() {
     const store = createStore(
         combineReducers({
             auth: authReducer,
-            user: userReducer,
+            currentUser: currentUserReducer,
+            profile: profileReducer,
             countries: countriesReducer,
             cities: citiesReducer
         }),
