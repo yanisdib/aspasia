@@ -19,9 +19,9 @@ function AppRouter() {
         <Switch>
           <Route path="/" component={App} exact={true} />
           <Route path="/sign-up" component={CreateAccount} />
-          <PrivateRoute path="/create-profile" component={CreateUserProfile} />
-          <Route path="/p/:id" component={Profile} />
           <Route path="/login" component={Login} />
+          <PrivateRoute path="/create-profile" component={CreateUserProfile} />
+          <PrivateRoute path="/p/:id" component={Profile} />
         </Switch>
       </main>
     </BrowserRouter>
