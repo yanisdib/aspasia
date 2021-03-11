@@ -1,4 +1,5 @@
-import { startGetCurrentUser } from '../../../actions/user';
+import { startGetCurrentUser } from '../../../actions/currentUser';
+import { startGetUserProfile } from '../../../actions/profile';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
@@ -14,6 +15,7 @@ import profilePicture from '../../../assets/images/profile_picture_original.jpg'
 import ProfileLanguages from './ProfileLanguages/ProfileLanguages';
 import ProfileHobbies from './ProfileHobbies/ProfileHobbies';
 import ProfileFavoriteMusic from './ProfileFavoriteMusic/ProfileFavoriteMusic';
+import ProfileInformation from './ProfileInformation/ProfileInformation';
 
 
 function Profile(props) {
@@ -21,21 +23,22 @@ function Profile(props) {
     backgroundImage: `url(${cover})`,
     backgroundPositionX: 'center',
     backgroundSize: 'cover'
-  }
+  };
   const profileThumbnail = {
     backgroundImage: `url(${profilePicture})`,
     backgroundPositionY: 'center',
     backgroundSize: 'cover'
-  }
+  };
   const dispatch = useDispatch();
-  const uid = useSelector(state => state.auth.uid);
+  //const uid = useSelector(state => state.auth.uid);
+  const uid = props.match.params.id;
   useEffect(() => {
-    dispatch(startGetCurrentUser(uid));
+    dispatch(startGetUserProfile(uid));
   }, [])
-  const currentUser = useSelector(state => state.user);
-  const { birthdate, city, country, createdAt, firstName, lastName, email, isSuper, isVerified, profile, username } = currentUser;
-  console.log(currentUser);
-  return Object.keys(currentUser).length > 0 ? (
+  const userProfile = useSelector(state => state.profile);
+  const { birthdate, city, country, createdAt, firstName, lastName, email, isSuper, isVerified, profile, username } = userProfile;
+  //  const { biography } = profile;
+  return Object.keys(userProfile).length > 0 ? (
     <div className="container">
       <div className="row profile mb-5">
         <div className="col-12">
@@ -55,25 +58,30 @@ function Profile(props) {
                   <h6 className="fw-4 gray">@{props.match.params.id}</h6>
                 </div>
               </div>
-
+            </div>
+            <div className="row mt-4 mb-3 w-75">
+              <div className="col-12 text-center">
+                {profile.biography}
+              </div>
+            </div>
+            <div className="row profile-actions text-center mt-4 mb-5 w-75">
+              <div className="col-4">
+                <ActionButton icon={PersonAddRoundedIcon} style="blue">Add friend</ActionButton>
+              </div>
+              <div className="col-4">
+                <ActionButton icon={ChatRoundedIcon} style="green">Message</ActionButton>
+              </div>
+              <div className="col-4">
+                <ActionButton icon={PersonRoundedIcon} style="info">54 friends</ActionButton>
+              </div>
             </div>
           </div>
-          <div className="row profile-actions text-center mt-5 mb-5 w-75">
-            <div className="col-4">
-              <ActionButton icon={PersonAddRoundedIcon} style="blue">Add friend</ActionButton>
-            </div>
-            <div className="col-4">
-              <ActionButton icon={ChatRoundedIcon} style="green">Message</ActionButton>
-            </div>
-            <div className="col-4">
-              <ActionButton icon={PersonRoundedIcon} style="info">54 friends</ActionButton>
-            </div>
-          </div>
-          <div className="row mt-5 w-75">
-            <div className="col-12 text-center">
-              {profile.biography}
-            </div>
-          </div>
+          <ProfileInformation
+            city={city}
+            country={country}
+            birthdate={birthdate}
+            {...profile}
+          />
           <ProfileLanguages {...profile} />
           <ProfileHobbies {...profile} />
           <ProfileFavoriteMusic {...profile} />

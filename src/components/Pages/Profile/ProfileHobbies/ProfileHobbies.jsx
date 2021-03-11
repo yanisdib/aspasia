@@ -10,7 +10,7 @@ function ProfileHobbies({ hobbies }) {
     return (
         <div className="row mt-5 mb-5">
             <div className="col">
-                <h4 className="fw-5 mb-4">Hobbies</h4>
+                <h4 className="fw-6 mb-4">Hobbies</h4>
                 {hobbiesList}
             </div>
         </div>
