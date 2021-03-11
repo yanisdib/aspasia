@@ -124,6 +124,7 @@ p {
     color: $primary-action-color;
     background-color: $primary-btn-action;
     border-color: $primary-btn-action;
+    cursor: default !important;
   }
 }
 
