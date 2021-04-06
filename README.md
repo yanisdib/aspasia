@@ -1,7 +1,7 @@
 # Google Pals
 **_Penpals network application using Google design_**
 
-Showcase : coming soon
+This repository won't be updated. This project is still going on under another temporary name (Emanon) using a updated tech stack with MongoDB and so on.
 
 
 ## **Features**
