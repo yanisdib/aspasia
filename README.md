@@ -2,8 +2,7 @@
 **_Penpals network application using Google design_**
 
 This repository won't be updated for a moment.
-I'm developing a more interesting app idea at the moment. 
-Please refer to the repository "Emanon".
+I'm developing a more interesting app idea at the moment.
 
 
 ## **Features**
